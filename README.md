@@ -1,2 +1,3 @@
-# pixijs
-Translate and learn pixijs
+# PixiJS
+
+
