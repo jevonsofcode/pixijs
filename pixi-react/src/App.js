@@ -8,11 +8,11 @@ export default class PixiApp extends Component {
 
     componentDidMount() {
         // 创建一个 100 * 100 透明的 canvas 画布
-        this.app = new PIXI.Application({width: 100, height: 100, transparent: true });
+        this.app = new PIXI.Application({ width: 100, height: 100, transparent: true });
 
         // ！React 这里的图片要用 require 引进来
         const png = PIXI.Sprite.from(require("./react.png"));
-        
+
         // 图片锚点挂载在中间
         png.anchor.set(.5);
 
@@ -25,17 +25,17 @@ export default class PixiApp extends Component {
 
         // 让图片转起来
         this.app.ticker.add(() => {
-            png.rotation += 0.1;
+            png.rotation += -1;
         });
 
         this.canvas.appendChild(this.app.view);
         this.app.start();
     }
-    
+
     render() {
         // 用 React 的 ref 将 Pixi 实现
         return (
-            <div ref={(thisDiv) => {this.canvas = thisDiv}} />
+            <div ref={(e) => { this.canvas = e }} />
         );
     }
 }
