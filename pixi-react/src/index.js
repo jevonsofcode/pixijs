@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import App from ''
+import PixiApp from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<PixiApp />, document.getElementById('root'));
