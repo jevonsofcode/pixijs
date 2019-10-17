@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import * as PIXI from 'pixi.js';
-const reactLogo = require("../../source/react.png")
+const reactLogo = require("../../../source/react.png");
 
 export default class Tinting extends Component {
     app = PIXI.Application;
