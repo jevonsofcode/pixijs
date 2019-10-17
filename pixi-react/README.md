@@ -1,4 +1,4 @@
-# The First React App with Pixi
+# Examples -> React App with Pixi
 
 ## run
 
