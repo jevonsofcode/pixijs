@@ -4,7 +4,6 @@ import * as PIXI from 'pixi.js';
 export default class PixiApp extends Component {
     app = PIXI.Application;
     canvas = HTMLDivElement;
-    circle = PIXI.Graphics;
 
     componentDidMount() {
         // 创建一个 100 * 100 透明的 canvas 画布
