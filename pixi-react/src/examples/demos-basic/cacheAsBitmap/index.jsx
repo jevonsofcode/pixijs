@@ -1,5 +1,5 @@
 /**
- * 着色
+ * 旋转变大变小
  */
 import React, { Component } from 'react';
 import * as PIXI from 'pixi.js';
@@ -61,6 +61,7 @@ export default class CacheAsBitmap extends Component {
             reactContainer.cacheAsBitmap = !reactContainer.cacheAsBitmap;
         }
 
+        this.app.stage.buttonMode = true;
         // 结合 鼠标点击 + 触摸
         this.app.stage.on('pointertap', onClick);
 
@@ -78,7 +79,6 @@ export default class CacheAsBitmap extends Component {
             reactContainer.scale.y = Math.sin(count);
             reactContainer.rotation += -0.01;
         });
-
     }
 
     render() {
