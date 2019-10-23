@@ -19,7 +19,7 @@ export default class CacheAsBitmap extends Component {
         this.app = new PIXI.Application({ width: 500, height: 500, transparent: true });
         // 把这个 stage 挂载到元素上
         this.canvas.appendChild(this.app.view);
-        
+
         // 生成 10000 个 Sprite 的 [ParticleContainer](http://pixijs.download/release/docs/PIXI.ParticleContainer.html#ParticleContainer)
         const sprites = new PIXI.ParticleContainer(
             10000, // 容器可以渲染的最大粒子数
