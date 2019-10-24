@@ -1,5 +1,7 @@
 /**
  * 刮刮卡
+ * 
+ * todo: 不完整，一般刮刮卡应该挂某区域后清除蒙层
  */
 import React, { Component } from 'react';
 import * as PIXI from 'pixi.js';
@@ -14,7 +16,6 @@ export default class CacheAsBitmap extends Component {
         this.app = new PIXI.Application({ width: 500, height: 300, transparent: true });
         // 把这个 stage 挂载到元素上
         this.canvas.appendChild(this.app.view);
-        console.log(this.app)
         
         const { stage } = this.app;
 
@@ -54,8 +55,9 @@ export default class CacheAsBitmap extends Component {
              * http://pixijs.download/release/docs/PIXI.RenderTexture.html
              */
             const renderTexture = PIXI.RenderTexture.create(that.app.screen.width, that.app.screen.height);
-
+            // 把这个 RenderTexture 创建为一个 Sprite
             const renderTextureSprite = new PIXI.Sprite(renderTexture);
+            // 加入 stage
             stage.addChild(renderTextureSprite);
 
             // 把 RenderTexture 变成图的遮罩
@@ -73,15 +75,20 @@ export default class CacheAsBitmap extends Component {
             function pointerMove(event) {
                 if (dragging) {
                     brush.position.copyFrom(event.data.global);
+                    /**
+                     * render (displayObject, renderTexture, clear, transform, skipUpdateTransform)
+                     * http://pixijs.download/release/docs/PIXI.Renderer.html#render
+                     */
                     that.app.renderer.render(brush, renderTexture, false, null, false);
                 }
             }
-
+            // 按下触发 move 事件
             function pointerDown(event) {
+                console.log("===> ", renderTextureSprite)
                 dragging = true;
                 pointerMove(event);
             }
-
+            // 抬起关闭 move 事件
             function pointerUp(event) {
                 dragging = false;
             }
